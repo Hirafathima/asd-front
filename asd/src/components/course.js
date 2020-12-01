@@ -17,7 +17,7 @@ const Course = (props)=>{
           const  semester=document.getElementById('semester').value;
           
       
-          fetch('http://localhost:3000/registercourses',{
+          fetch('http://student-info-backend.herokuapp.com/registercourses',{
             
         method:"POST",
         headers:{
@@ -61,14 +61,27 @@ const Course = (props)=>{
     }
     return(
         <div>
-            <form onSubmit={(e)=>{ register(e) }}>
+          <h3 style={{ paddingLeft:"5vw", paddingTop:"10vh"}}>Course Registration</h3>
+            <div className="col" style={{ paddingTop: "10vh", paddingLeft:"17vw" }}>
+              
+            <input type="text" class="form-control" name="courseid" id="courseid" placeholder="Enter Course Id" style={{ marginBottom: "2vh", width: "50%" }} />
+            <input type="text" class="form-control" name="coursename" id="coursename" placeholder="Enter Course Name" style={{ marginBottom: "2vh", width: "50%" }} />
+                    <input type="text" class="form-control" name="credit" id="credit" placeholder="Enter credits" style={{ marginBottom: "2vh", width: "50%" }} />
+                    <input type="text" class="form-control" name="staff" id="staff" placeholder="Enter staff name" style={{ marginBottom: "2vh", width: "50%" }}></input>
+                    <input type="text" class="form-control" name="semester" id="semester" placeholder="Enter semester" style={{ marginBottom: "2vh", width: "50%" }} />
+                   
+                    <button type="button" class="btn btn-dark" onClick={(e) => register(e)} style={{ float: "right", marginRight: "23vw" }}>Register</button>
+
+
+                </div>
+            {/* <form onSubmit={(e)=>{ register(e) }}>
                 <input type="text" name ="courseid" id="courseid"/>
                 <input type="text" name ="coursename" id="coursename"/>
                 <input type="number" name ="credit" step="0.1" id="credit"/>
                 <input type="text" name ="staff" id="staff"/>
                 <input type="text" name ="semester" id="semester"/>
                 <button type="submit">register course</button>
-            </form>
+            </form> */}
             {message}
            
         </div>
