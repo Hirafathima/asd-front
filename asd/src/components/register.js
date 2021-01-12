@@ -9,8 +9,7 @@ const Register =(props)=>{
   console.log(props);
     const [message,setMessage]=useState('');
     function register(e){
-        e.preventDefault();
-
+          e.preventDefault();
         
           const  username=document.getElementById('username').value;
           const  password=document.getElementById('password').value;
@@ -79,9 +78,7 @@ const Register =(props)=>{
                     <input type="password" class="form-control" id="password" placeholder="Enter password" style={{ marginBottom: "2vh", width: "50%" }}></input>
                     <input type="text" class="form-control" id="currentsem" placeholder="Enter current semester" style={{ marginBottom: "2vh", width: "50%" }} />
                     <input type="text" class="form-control" id="department" placeholder="Enter department" style={{ marginBottom: "2vh", width: "50%" }} />
-                    <button type="button" class="btn btn-dark" onClick={(e) => register(e)} style={{ float: "right", marginRight: "23vw" }}>Register</button>
-
-
+                    <button type="button" css="btn btn-dark" onClick={(e) => register(e)} style={{ float: "right", marginRight: "23vw" }}>Register</button>
                 </div>
             {/* <button type="submit">register</button> */}
 

@@ -7,6 +7,7 @@ import viewcourse from './viewcourse';
 
 const Notification =(props)=>{
     
+  const [notifications, setNotifications] = useState([]);
 
     function notify(e){
       const header = document.getElementById('header').value;
@@ -49,8 +50,12 @@ const Notification =(props)=>{
               r.json()
               
               
-                ).then(data=>{console.log(data)}).catch(err=>console.log(err));
+                ).then(data=>{setNotifications(data.notifications);
+                console.log(notifications);
+                }).catch(err=>console.log(err));
             }
+
+            
             
           
       
@@ -61,12 +66,16 @@ const Notification =(props)=>{
     
     return (
         
-      <div>
-        <input type="text" name="header" id="header"/>
-        <textarea type="text" name="body" id="body"/>
-        <Button onClick={(e)=>{notify(e)}}>notify</Button>
-
-        <Button onClick={(e)=>{view(e)}}>view notifications</Button>
+      <div style={{paddingTop:"10vh", paddingLeft:"10vw"}}>
+        <input type="text" name="header" className="form-control" id="header" placeholder="Enter caption" style={{width:"50%", marginBottom:"5vh"}}/>
+        <textarea type="text" name="body" className="form-control" id="body" placeholder="Enter message" style={{width:"50%", marginBottom:"5vh"}}/>
+        <button className="btn btn-dark" onClick={(e)=>{notify(e)}} style={{ float: "right", marginRight: "23vw" }}>Publish</button>
+        <button className="btn btn-dark" onClick={(e)=>{view(e)}} >View Notifications</button>
+        {notifications!==null?notifications.map(x=>{
+          return(<div>
+        <h3>{x.header}</h3>
+          <h6>{x.body}</h6>
+        </div>)}):''}
       </div>
     )
 

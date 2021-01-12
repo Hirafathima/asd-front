@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch, useHistory, Redirect, Link } fr
 import { withRouter } from 'react-router';
 import './home.css'
 export default function Home() {
+    // const [noti, setNoti] = useState([]);
     useEffect(() => {
         fetch(`http://student-info-backend.herokuapp.com/notifications`, {
             headers: {
@@ -12,6 +13,7 @@ export default function Home() {
             }
         }).then(r => r.json()).then(result => {
             console.log(result)
+            // setNoti(result);
         })
 
             .catch(err => console.log(err));
@@ -92,7 +94,12 @@ Phasellus ultricies mauris et placerat interdum. Nullam sit amet lobortis nisi. 
 
             <div style={{ padding: "10vh" }}>
                 <h3>Notifications</h3>
-      first five notification here
+      {/* {noti!==null&&noti!==undefined?noti.map(x=>{
+          return <div>
+              <h1>{x.title}</h1>
+              <h6>{x.message}</h6>
+          </div>
+      }):''} */}
             <button type="button" class="btn btn-dark" onClick={(e) => login(e)} style={{ float: "right", marginRight: "15vw" }}><Link to={'/notifications'}>See all</Link></button>
 
 

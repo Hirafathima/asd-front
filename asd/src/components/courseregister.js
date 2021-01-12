@@ -59,7 +59,7 @@ function addToArray(e){
 }
 
 function registerCourse(){
-    // console.log(courses);
+    console.log(checked);
     
     fetch('http://student-info-backend.herokuapp.com/student/student-registered-courses',{
             
@@ -82,9 +82,13 @@ function registerCourse(){
 }
  return(
      <div>
-         courses !!
          <Dropdown options={options} onChange={(newV)=>{register(newV)}} placeholder="Select semester" />
- {courses.courses===undefined?'':<div>
+ {courses.courses===undefined?<div>
+     
+     {courses.scourse!==undefined && courses.scourse!==null?courses.scourse.map(x=>{return <div>
+     <p>{x.coursename}</p>
+     </div>}):''}
+ </div>:<div>
  {courses.courses.map(x=>{return <div>
     <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1" value={x.courseid} onClick={addToArray}/>
